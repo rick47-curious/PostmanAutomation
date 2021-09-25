@@ -1,0 +1,16 @@
+{
+  "name": "api-automation",
+  "version": "1.0.0",
+  "description": "api automation project",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ./src/runner.js"
+  },
+  "author": "Anuplab Chatterjee",
+  "license": "ISC",
+  "devDependencies": {
+    "newman": "^5.2.2",
+    "newman-reporter-htmlextra": "^1.20.1",
+    "read-excel-file": "^5.0.0"
+  }
+}

@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "604c4f45-caf9-43cb-badb-5819fbd3e0f7",
+		"name": "DemoCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PostRequest1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let reqbody =  JSON.parse(pm.request.body.raw);\r",
+							"let count = parseInt(pm.globals.get(\"assignno1\"));\r",
+							"\r",
+							"pm.test(\"status check\",function(){\r",
+							"    pm.expect(pm.response.code).to.eq(201);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"if (reqbody.job === \"employee\"){\r",
+							"  //  console.log(\"Inside here\");\r",
+							"count = parseInt(count) + 1; \r",
+							"pm.globals.set(\"assignno1\",count);    \r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":{{assignno1}},\r\n    \"job\":\"employee\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostRequest2",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"let reqbody =  JSON.parse(pm.request.body.raw);\r",
+							"let count = parseInt(pm.globals.get(\"assignno2\"));\r",
+							"\r",
+							"\r",
+							"pm.test(\"status check\",function(){\r",
+							"    pm.expect(pm.response.code).to.eq(201);\r",
+							"});\r",
+							"\r",
+							"if (reqbody.job === \"boss\"){\r",
+							"  //  console.log(\"Inside here\");\r",
+							"count = parseInt(count) + 1; \r",
+							"pm.globals.set(\"assignno2\",count);    \r",
+							"}"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":{{assignno2}},\r\n    \"job\":\"boss\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://reqres.in/api/users",
+					"protocol": "https",
+					"host": [
+						"reqres",
+						"in"
+					],
+					"path": [
+						"api",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
