@@ -1,7 +1,7 @@
 const excel = require('read-excel-file/node');
 const apitest = require('./apitest');
-//const refreshGlobals = require("./refreshGlobals");
-const assignNo = require('./assignNo');
+
+
 
 let service_name = process.argv[2];
 let env_name = process.argv[3];
@@ -19,8 +19,7 @@ excel('./src/testdata.xlsx').then((rows) => {
     //all - all service present in the testparameters will be executed
     //console.log(service_name);
 
-    //Refresh global environment
-    assignNo.updateGlobals();
+    
     if (service_name == "all"){
         let executeFlag = null;
         for (i in rows){

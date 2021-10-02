@@ -11,31 +11,22 @@ function incrementNo(){
 
        aNo =  parseInt(globalJson.values[0].value) + 2;
        bNo =  parseInt(globalJson.values[1].value) + 2;
-      
-       fs.writeFileSync("./utility/readno1.txt",aNo.toString(),function(){
-           if (err){
-               console.log(err);
-           }
-       });
-       fs.writeFileSync("./utility/readno2.txt",bNo.toString(),function(){
-        if (err){
-            console.log(err);
-        }
-       });
+    
+    updateGlobals(aNo,bNo);
     });
 }
 
-function updateGlobals(){
+function updateGlobals(arg1,arg2){
     const updatedGlobals= {
         "values":[
             {
                 "key":'assignno1',
-                "value":readData("readno1.txt"),
+                "value":arg1,
                 "enabled":true
             },
             {
                 "key":'assignno2',
-                "value":readData("readno2.txt"),
+                "value":arg2,
                 "enabled":true
             }
         ]
@@ -48,16 +39,7 @@ function updateGlobals(){
 
   }
 
-function readData(filename){
 
-      let latestNo =  fs.readFileSync("./utility/"+filename,function(err,data){
-            if (err){
-                console.log(err);
-            }
-        });
-        return latestNo.toString();
-}
-
-module.exports = {incrementNo,updateGlobals}
+module.exports = {incrementNo}
 
 

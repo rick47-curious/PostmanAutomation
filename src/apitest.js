@@ -48,8 +48,9 @@ module.exports = function(testDetails){
 function callback(err){
     if (err){
         throw err;
-    }
+    }else{
     assignNo.incrementNo();
+    }
     console.log("Collection run completed")
 }
 
