@@ -4,15 +4,15 @@ pipeline {
 
     stages {
         
-        stage('Skip Clone repository') {
-            steps {
-              //git branch: 'develop', credentialsId: 'git_credentials', url: 'git@github.com:rick47-curious/PostmanAutomation.git'
-            // bat 'git checkout develop'
-             //bat 'git pull origin develop'
-             //bat 'git checkout develop'
-            // checkout([$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '5c337a1b-9032-4316-bf26-b47e65360017', url: 'git@github.com:rick47-curious/PostmanAutomation.git']]])
-            }
-        }
+//         stage('Skip Clone repository') {
+//             steps {
+//               //git branch: 'develop', credentialsId: 'git_credentials', url: 'git@github.com:rick47-curious/PostmanAutomation.git'
+//             // bat 'git checkout develop'
+//              //bat 'git pull origin develop'
+//              //bat 'git checkout develop'
+//             // checkout([$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '5c337a1b-9032-4316-bf26-b47e65360017', url: 'git@github.com:rick47-curious/PostmanAutomation.git']]])
+//             }
+//         }
         
         stage('Run Tests') {
             steps {
