@@ -4,9 +4,9 @@ pipeline {
 
     stages {
         
-        stage('Clone repository') {
+        stage('Skip Clone repository') {
             steps {
-              git branch: 'develop', credentialsId: 'git_credentials', url: 'git@github.com:rick47-curious/PostmanAutomation.git'
+              //git branch: 'develop', credentialsId: 'git_credentials', url: 'git@github.com:rick47-curious/PostmanAutomation.git'
             // bat 'git checkout develop'
              //bat 'git pull origin develop'
              //bat 'git checkout develop'
