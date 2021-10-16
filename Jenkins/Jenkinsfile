@@ -1,0 +1,52 @@
+pipeline {
+    
+    agent any
+
+    stages {
+        
+        stage('Clone repository') {
+            steps {
+              git branch: 'develop', credentialsId: 'git_credentials', url: 'git@github.com:rick47-curious/PostmanAutomation.git'
+            // bat 'git checkout develop'
+             //bat 'git pull origin develop'
+             //bat 'git checkout develop'
+            // checkout([$class: 'GitSCM', branches: [[name: '*/develop']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '5c337a1b-9032-4316-bf26-b47e65360017', url: 'git@github.com:rick47-curious/PostmanAutomation.git']]])
+            }
+        }
+        
+        stage('Run Tests') {
+            steps {
+                 bat 'npm install'
+                 bat 'npm test %service% %environment%'
+               
+                }
+        }
+        stage('Update GIT') {
+             steps {
+			 
+            
+			 bat 'git add globals/MyWorkspace.postman_globals.json'
+			// bat 'git checkout develop'
+             bat 'git commit -m "JenkinsBuild %BUILD_NUMBER%:updateGlobals"'
+             //bat 'git checkout develop'
+             bat 'git push origin develop'
+        }
+     }
+    }
+    
+        post {
+        success {
+            archiveArtifacts artifacts: 'newman/**/*.html', fingerprint: true
+          // junit 'build/reports/**/*.xml'
+            publishHTML(target:[
+                    allowMissing: false, 
+                    alwaysLinkToLastBuild: false, 
+                    keepAll: true, 
+                    reportDir: 'newman', 
+                    reportFiles: 'NormalUserRequest.html', 
+                    reportName: 'HTML Report', 
+                    reportTitles: 'ADV Report'])
+              }
+        }   
+        
+}
