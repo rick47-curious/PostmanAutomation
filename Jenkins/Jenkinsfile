@@ -26,7 +26,7 @@ pipeline {
 			 
             
 	     bat 'git add globals/MyWorkspace.postman_globals.json'
-             bat 'git commit -m "JenkinsBuild %BUILD_NUMBER%:updateGlobals"'
+             bat 'git diff --quiet || git commit -m "JenkinsBuild %BUILD_NUMBER%:updateGlobals"'
              bat 'git checkout -b develop'
              bat 'git push origin develop'
         }
