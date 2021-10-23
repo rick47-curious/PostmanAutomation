@@ -51,7 +51,7 @@ excel('./src/testdata.xlsx').then((rows) => {
             //Specific service to be executed will come from Jenkins parameter
             //Check if the specific service setup is found, if yes then proceed
             //else continue to fetch the next record from the testParameter sheet
-            if (rows[i][9] === service_name){
+            if (rows[i][8] === service_name){
                 executeFlag = true;
                 console.log(service_name + " wil be executed now");
             }else{
@@ -67,19 +67,19 @@ excel('./src/testdata.xlsx').then((rows) => {
             //Get the environment details
             switch(env_name){
                 case 'uat':
-                    testDetails.locateEnv = rootDir + "environments/" + rows[i][4];
+                    testDetails.locateEnv = rootDir + "environments/" + rows[i][3];
                     break;
                 case 'tst':
-                    testDetails.locateEnv = rootDir + "environments/" + rows[i][5];
+                    testDetails.locateEnv = rootDir + "environments/" + rows[i][4];
                     break;
                 case 'dev':
-                    testDetails.locateEnv = rootDir + "environments/" + rows[i][6];
+                    testDetails.locateEnv = rootDir + "environments/" + rows[i][5];
                     break;
                 default:
-                    testDetails.locateEnv = rootDir + "environments/" + rows[i][5];
+                    testDetails.locateEnv = rootDir + "environments/" + rows[i][4];
             }
-            testDetails.reportTitle = rows[i][7];
-            testDetails.reportDir = "./newman/" + rows[i][8];
+            testDetails.reportTitle = rows[i][6];
+            testDetails.reportDir = "./newman/" + rows[i][7];
             console.log(testDetails);
             if (executeFlag){
                 apitest(testDetails);

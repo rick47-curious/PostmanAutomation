@@ -11,7 +11,6 @@ module.exports = function(testDetails){
                // iterationData: testDetails.locateData,
                // iterationCount: testDetails.iterationCount,
                 globals:testDetails.globalData,
-                folder: [testDetails.foldername],
                 environment: testDetails.locateEnv,
                 reporters: ['cli','htmlextra'],
                 reporter:{
@@ -49,6 +48,7 @@ function callback(err){
     if (err){
         throw err;
     }else{
+        if (process.argv[2] == 'usercreation')
     assignNo.incrementNo();
     }
     console.log("Collection run completed")
