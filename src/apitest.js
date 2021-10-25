@@ -48,9 +48,10 @@ function callback(err){
     if (err){
         throw err;
     }else{
-        if (process.argv[2] == 'usercreation')
-    assignNo.incrementNo();
+    if (process.argv[2] == 'usercreation'){
+        assignNo.incrementNo();
     }
     console.log("Collection run completed")
+}
 }
 
